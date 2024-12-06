@@ -319,3 +319,34 @@ console.log(selecao.escolhaDeSelecao("Eurocopa", "Portugal"))//Você escolheu a 
 console.log(selecao.escolhaDeSelecao("CopaDaAsia", "Argentina"))//A seleção Argentina não está disponível no campeonato Copa da Ásia
 console.log(selecao.escolhaDeSelecao("CopaDoMundo", "Brasil"))//Você escolheu a seleção Brasil para jogar o campeonato Copa do Mundo
 console.log(selecao.escolhaDeSelecao("SerieA", "Porto"))//Nenhum campeonato válido selecionado. Tente novamente
+
+//Simula uma partida de times/seleções
+class Partida{
+    constructor(timeEscolhido, timeRival){
+        this.timeEscolhido = timeEscolhido
+        this.timeRival = timeRival
+        this.golsTimeEscolhido = 0
+        this.golsTimeRival = 0
+    }
+//Atualiza o placar da partida
+    placar(golsTimeEscolhido, golsTimeRival){
+        this.golsTimeEscolhido += golsTimeEscolhido
+        this.timeRival += golsTimeRival
+
+        if(this.golsTimeEscolhido === this.golsTimeRival){
+            return`Partida terminou com o placar de ${this.golsTimeEscolhido}x${this.golsTimeRival}. Empate.`
+        }
+        else if(this.golsTimeEscolhido > this.golsTimeRival){
+            return `${this.timeEscolhido} venceu com o placar de ${this.golsTimeEscolhido}x${this.golsTimeRival}.`
+        }
+        else{
+            return`${this.timeRival} venceu com o placar de ${this.golsTimeRival}x${this.golsTimeEscolhido}.`
+        }
+    }
+}
+//Mostra o resultado da partida
+let resultado = new Partida("São Paulo", "Fluminense")
+
+console.log(resultado.placar(3, 0))//São Paulo venceu com o placar de 3x0.
+console.log(resultado.placar(1, 2))//Fluminense venceu com o placar de 2x1
+console.log(resultado.placar(0, 0))//Partida terminou com o placar de 0x0. Empate.
